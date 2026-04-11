@@ -34,7 +34,7 @@ L'objectif : passer de fichiers Excel épars à **un outil de décision unique, 
 
 | Vue principale | Alertes Stock | Analyse Direction |
 |:-:|:-:|:-:|
-| ![Direction](Direction.png) | ![Alerte](ALERTE.png) | ![Stock](Alerte%20Stock%24.png) |
+| ![Direction](Direction.png) | ![Stock](Alerte%20Stock%24.png) |
 
 ---
 
@@ -72,8 +72,7 @@ L'objectif : passer de fichiers Excel épars à **un outil de décision unique, 
 ├── Inventaire.csv                 # Catalogue produits & stocks
 ├── Avis-Clients.csv               # Évaluations satisfaction client
 ├── Direction.png                  # Capture page principale
-├── ALERTE.png                     # Capture page alertes
-├── Alerte Stock$.png              # Capture page gestion stock
+├── Alerte Stock.png              # Capture page gestion stock
 └── Script_VeloSahel_Final.html    # Script annoté du projet
 ```
 
