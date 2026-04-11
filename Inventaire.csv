@@ -1,0 +1,53 @@
+IDProduit,NomProduit,Categorie,NiveauStock,FrequenceReappro,DernierReappro
+1,Sahel-VTT100,VTT,50,30 j,30/03/2023
+2,Dune-R200,Velo Route,75,45 jours,20/03/2023
+3,Nomade-T50,Velo Randonnee,25,60 jours,10/03/2023
+4,,Velo Urbain,35,30 j,12/04/2023
+5,Junior-K50,Velo Enfant,20,45 jours,02/04/2023
+6,Piste-T200,Velo Piste,15,60 jours,03/04/2023
+7,Sahel-VTT200,,45,30 jours,04/04/2023
+8,Dune-R300,Velo Route,90,45 jours,05/04/2023
+9,Nomade-T100,Velo Randonnee,20,60 jours,06/04/2023
+10,Cite-C300,Velo Urbain,40,30 jours,07/04/2023
+11,Junior-K100,Velo Enfant,30,45 jours,08/04/2023
+12,Piste-T300,Velo Piste,10,60 jours,09/04/2023
+13,Sahel-VTT300,VTT,55,30 jours,10/04/2023
+14,Dune-R400,Velo Route,110,45 jours,11/04/2023
+15,Nomade-T200,,30,60 jours,12/04/2023
+16,Cite-C400,Velo Urbain,25,30 jours,13/04/2023
+17,Junior-K150,Velo Enfant,25,45 jours,14/04/2023
+18,Piste-T400,Velo Piste,5,60 jours,15/04/2023
+19,Sahel-VTT400,VTT,60,30 jours,16/04/2023
+20,Dune-R500,Velo Route,130,45 jours,17/04/2023
+21,Nomade-T300,Velo Randonnee,40,60 jours,18/04/2023
+22,Cite-C500,Velo Urbain,30,30 jours,19/04/2023
+23,Junior-K200,Velo Enfant,15,45 jours,20/04/2023
+24,Piste-T500,Velo Piste,5,60 jours,21/04/2023
+25,Sahel-VTT500,VTT,70,30 jours,22/04/2023
+26,Dune-R600,Velo Route,150,45 jours,23/04/2023
+27,Nomade-T400,Velo Randonnee,45,60 jours,24/04/2023
+28,Cite-C600,Velo Urbain,20,30 jours,25/04/2023
+29,Junior-K250,Velo Enfant,20,45 jours,26/04/2023
+30,Piste-T600,Velo Piste,10,60 jours,27/04/2023
+31,Sahel-VTT600,VTT,80,30 jours,28/04/2023
+32,Dune-R700,Velo Route,200,45 jours,29/04/2023
+33,Nomade-T500,Velo Randonnee,50,60 jours,30/04/2023
+34,Cite-C700,Velo Urbain,15,30 jours,01/05/2023
+35,Junior-K300,Velo Enfant,25,45 jours,02/05/2023
+36,Piste-T700,Velo Piste,5,60 jours,03/05/2023
+37,Sahel-VTT700,VTT,90,30 jours,04/05/2023
+38,Dune-R800,Velo Route,250,45 jours,05/05/2023
+39,Nomade-T600,Velo Randonnee,60,60 jours,06/05/2023
+40,Cite-C800,Velo Urbain,10,30 jours,07/05/2023
+41,Junior-K350,Velo Enfant,15,45 jours,08/05/2023
+42,Piste-T800,Velo Piste,5,60 jours,09/05/2023
+43,Sahel-VTT800,VTT,100,30 jours,10/05/2023
+44,Dune-R900,Velo Route,300,45 jours,11/05/2023
+45,Nomade-T700,Velo Randonnee,70,60 jours,12/05/2023
+46,Cite-C900,Velo Urbain,5,30 jours,13/05/2023
+47,Junior-K400,Velo Enfant,10,45 jours,14/05/2023
+48,Piste-T900,Velo Piste,5,60 jours,15/05/2023
+49,Sahel-VTT900,VTT,120,30 jours,16/05/2023
+50,Dune-R1000,Velo Route,350,45 jours,17/05/2023
+51,Nomade-T800,Velo Randonnee,80,60 jours,18/05/2023
+52,Cite-C1000,Velo Urbain,2,30 jours,19/05/2023

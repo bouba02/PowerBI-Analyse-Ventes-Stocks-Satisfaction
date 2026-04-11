@@ -1,0 +1,14 @@
+# Fichiers système
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Fichiers temporaires
+*.tmp
+*.temp
+~$*
+
+# Fichiers Office temporaires
+~*.docx
+~*.xlsx
+~*.pptx
