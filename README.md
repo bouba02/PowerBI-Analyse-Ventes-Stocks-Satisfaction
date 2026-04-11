@@ -6,7 +6,7 @@
 [![DAX](https://img.shields.io/badge/DAX-0078D4?style=for-the-badge&logo=microsoft&logoColor=white)](https://dax.guide)
 [![Licence](https://img.shields.io/badge/Licence-MIT-green?style=for-the-badge)](LICENSE)
 
-> Projet BI complet illustrant la mise en place d'un système de pilotage de la performance commerciale : de la collecte des données brutes jusqu'au dashboard décisionnel — en passant par la modélisation, les KPIs et les alertes dynamiques.
+> Projet BI complet illustrant la mise en place d'un système de pilotage de la performance commerciale : de la collecte des données brutes jusqu'au dashboard décisionnel — en passant par le cadrage du projet, la modélisation, les KPIs et les alertes dynamiques.
 
 ---
 
