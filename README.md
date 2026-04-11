@@ -1,165 +1,123 @@
-# 🚲 VéloSahel – Dashboard Power BI | Module 1 Formation BI
+# 📊 Power BI — Analyse Ventes, Stocks & Satisfaction Client
+### Distribution de vélos & accessoires | Afrique de l'Ouest
 
-> **Projet pédagogique complet** — Analyse des ventes, des stocks et de la satisfaction client d'une entreprise de distribution de vélos en Afrique de l'Ouest, réalisé dans le cadre du **Module 1 de la formation Analyste BI avec Power BI**.
+[![Power BI](https://img.shields.io/badge/Power_BI-F2C811?style=for-the-badge&logo=powerbi&logoColor=black)](https://powerbi.microsoft.com)
+[![Excel](https://img.shields.io/badge/Excel-217346?style=for-the-badge&logo=microsoft-excel&logoColor=white)](https://www.microsoft.com/excel)
+[![DAX](https://img.shields.io/badge/DAX-0078D4?style=for-the-badge&logo=microsoft&logoColor=white)](https://dax.guide)
+[![Licence](https://img.shields.io/badge/Licence-MIT-green?style=for-the-badge)](LICENSE)
+
+> Projet BI complet illustrant la mise en place d'un système de pilotage de la performance commerciale : de la collecte des données brutes jusqu'au dashboard décisionnel — en passant par la modélisation, les KPIs et les alertes dynamiques.
 
 ---
 
-## 🎬 Vidéo complète sur YouTube
+## 🎬 Démonstration complète
 
-[![VéloSahel – Dashboard Power BI Complet](https://img.youtube.com/vi/VAYAVpYkcMg/maxresdefault.jpg)](https://youtu.be/VAYAVpYkcMg)
+[![Dashboard Power BI – Analyse Ventes Stocks Satisfaction](https://img.youtube.com/vi/VAYAVpYkcMg/maxresdefault.jpg)](https://youtu.be/VAYAVpYkcMg)
 
-▶️ **[Regarder la vidéo complète (54 min)](https://youtu.be/VAYAVpYkcMg)**
+▶️ **[Voir la démo complète (54 min)](https://youtu.be/VAYAVpYkcMg)**
 
-**Au programme :**
-- Nettoyage et préparation des données (Power Query)
-- Modélisation en étoile (Star Schema)
-- Création de mesures DAX (KPIs, ratios, classements)
-- Visualisations avancées et mise en page professionnelle
-- Alertes dynamiques et navigation entre pages
+---
+
+## 🧩 Problématique métier
+
+Une entreprise de distribution de vélos et accessoires opérant en Afrique de l'Ouest souhaitait **centraliser le pilotage de son activité** autour de 3 axes :
+
+- **Ventes** — Quelle est la performance commerciale par produit, période et client ?
+- **Stocks** — Quels produits sont en rupture ou en sur-stock ?
+- **Satisfaction client** — Comment évolue la note moyenne et quels signaux faibles détecter ?
+
+L'objectif : passer de fichiers Excel épars à **un outil de décision unique, actualisable et lisible par le management**.
 
 ---
 
 ## 📊 Aperçu du Dashboard
 
-| Page Principale | Alerte Stock | Analyse Direction |
+| Vue principale | Alertes Stock | Analyse Direction |
 |:-:|:-:|:-:|
-| ![Dashboard](Direction.png) | ![Alerte](ALERTE.png) | ![Direction](Alerte%20Stock%24.png) |
+| ![Direction](Direction.png) | ![Alerte](ALERTE.png) | ![Stock](Alerte%20Stock%24.png) |
 
 ---
 
-## 🗂️ Structure du Projet
+## ⚙️ Stack technique
 
-```
-VeloSahel-PowerBI/
-│
-├── 📊 SahelVelo Dashboard.pbix       # Fichier Power BI (rapport complet)
-├── 📄 SahelVelo Dashboard.pdf        # Export PDF du dashboard
-│
-├── 📁 Données Sources
-│   ├── Ventes.csv                    # Table de faits — transactions de vente
-│   ├── Inventaire.csv                # Table de dimension — produits & stocks
-│   └── Avis-Clients.csv              # Table de faits — satisfaction client
-│
-├── 🖼️ Captures
-│   ├── Direction.png                 # Vue dashboard principal
-│   ├── ALERTE.png                    # Page alertes de performance
-│   └── Alerte Stock$.png             # Page gestion des stocks
-│
-└── 📝 Script_VeloSahel_Final.html    # Script commenté de la formation
-```
-
----
-
-## 📁 Description des Jeux de Données
-
-### `Ventes.csv` — Transactions commerciales
-| Colonne | Description |
+| Outil | Rôle |
 |---|---|
-| `IDTransaction` | Identifiant unique de la vente |
-| `IDProduit` | Référence du produit vendu |
-| `IDClient` | Référence du client |
-| `Quantite` | Nombre d'unités vendues |
-| `MontantVente` | Chiffre d'affaires généré (FCFA) |
-| `DateTransaction` | Date de la transaction |
-
-> ⚠️ **Données intentionnellement imparfaites** : doublons, valeurs manquantes et formats incohérents inclus pour pratiquer le nettoyage Power Query.
-
-### `Inventaire.csv` — Catalogue produits
-Informations sur les vélos et accessoires : référence, catégorie, prix unitaire, stock disponible, seuil d'alerte.
-
-### `Avis-Clients.csv` — Satisfaction client
-Évaluations clients par transaction : note de satisfaction (1–5), commentaires, canal de vente.
+| **Power BI Desktop** | Rapport, visualisations, navigation multi-pages |
+| **Power Query (M)** | Nettoyage, transformation, consolidation des sources |
+| **DAX** | Mesures calculées, KPIs, intelligence temporelle |
+| **Modélisation en étoile** | Optimisation des relations entre tables |
 
 ---
 
-## 🛠️ Technologies Utilisées
-
-| Outil | Usage |
-|---|---|
-| **Power BI Desktop** | Rapport, visualisations, navigation |
-| **Power Query (M)** | Nettoyage, transformation, fusion des tables |
-| **DAX** | Mesures calculées, KPIs dynamiques, intelligence temporelle |
-| **Modélisation en étoile** | Structure relationnelle optimisée |
-| **Mise en page Power BI** | Design professionnel, alertes visuelles |
-
----
-
-## 📐 Modèle de Données (Star Schema)
+## 📐 Modèle de données
 
 ```
-        [Inventaire]          [Avis-Clients]
-             │                      │
-             └──────────────────────┘
-                        │
-                   [Ventes] ← Table de faits centrale
-                        │
-                   [Calendrier] (table date générée en DAX)
+     [Inventaire]        [Avis-Clients]
+          │                    │
+          └────────────────────┘
+                    │
+              [Ventes]  ← Table de faits
+                    │
+              [Calendrier]  (table date DAX)
 ```
 
 ---
 
-## 🎯 KPIs & Mesures DAX Clés
+## 📁 Contenu du repository
 
-- **CA Total** — Chiffre d'affaires consolidé
-- **Quantité Vendue** — Volume total d'unités
-- **Note Moyenne Satisfaction** — Moyenne pondérée des avis clients
-- **Taux de Rupture de Stock** — % produits sous seuil d'alerte
-- **CA MTD / YTD** — Cumuls mois en cours / année en cours (intelligence temporelle)
-- **Classement Produits** — RANKX dynamique par CA
-- **Alertes Dynamiques** — Indicateurs visuels conditionnels
-
----
-
-## 🚀 Comment Utiliser ce Projet
-
-1. **Cloner le repository**
-   ```bash
-   git clone https://github.com/bouba02/VeloSahel-PowerBI.git
-   ```
-
-2. **Ouvrir le fichier Power BI**
-   ```
-   Double-cliquer sur : SahelVelo Dashboard.pbix
-   ```
-
-3. **Si les données ne se chargent pas**, aller dans :
-   ```
-   Accueil → Transformer les données → Paramètres de la source de données
-   ```
-   Et rediriger vers les fichiers CSV du dossier cloné.
-
-4. **Explorer le dashboard** — 3 pages : Vue Générale, Alertes Stock, Analyse Direction
+```
+├── SahelVelo Dashboard.pbix       # Fichier Power BI complet
+├── SahelVelo Dashboard.pdf        # Export PDF du rapport
+├── Ventes.csv                     # Transactions commerciales
+├── Inventaire.csv                 # Catalogue produits & stocks
+├── Avis-Clients.csv               # Évaluations satisfaction client
+├── Direction.png                  # Capture page principale
+├── ALERTE.png                     # Capture page alertes
+├── Alerte Stock$.png              # Capture page gestion stock
+└── Script_VeloSahel_Final.html    # Script annoté du projet
+```
 
 ---
 
-## 📚 Contexte Pédagogique
+## 📏 Mesures DAX implémentées
 
-Ce projet est le **cas métier fil rouge** du **Module 1 — Formation Analyste BI avec Power BI**, conçu et dispensé par **Boubacar Nikiema (Ngroup Media & Digital)**.
-
-**VéloSahel** est une entreprise fictive de distribution de vélos et accessoires en Afrique de l'Ouest. Le cas métier est conçu pour couvrir l'ensemble du workflow BI :
-
-> Données brutes → Nettoyage → Modélisation → Analyse → Visualisation → Décision
-
-Ce programme de 6 sessions (12h) a été conçu pour des professionnels souhaitant maîtriser Power BI dans un **contexte africain** — données en FCFA, noms de villes et produits adaptés au marché local.
+- **CA Total**, **CA MTD**, **CA YTD** — Chiffre d'affaires avec intelligence temporelle
+- **Quantité vendue** — Volume global et par catégorie
+- **Note moyenne satisfaction** — Pondérée par volume de transactions
+- **Taux de rupture de stock** — % produits sous seuil d'alerte
+- **Classement produits** — `RANKX` dynamique par CA et par marge
+- **Alertes conditionnelles** — Indicateurs visuels basés sur des seuils métier
 
 ---
 
-## 👨‍💻 Auteur
+## 🚀 Utiliser ce projet
 
-**Boubacar Nikiema**  
-Data Analyst | Formateur BI | Fondateur Ngroup Media & Digital
+```bash
+git clone https://github.com/bouba02/PowerBI-Analyse-Ventes-Stocks-Satisfaction.git
+```
 
-- 🌐 [LinkedIn](https://www.linkedin.com/in/boubacar-nikiema)
+Ouvrir `SahelVelo Dashboard.pbix` avec Power BI Desktop.  
+Si les sources ne se chargent pas : `Accueil → Transformer les données → Paramètres de la source de données` → rediriger vers les CSV du dossier cloné.
+
+---
+
+## 🤝 Collaboration & Missions
+
+Ce projet illustre mon approche sur des missions de type :
+
+- **Audit & structuration de données** — nettoyage, modélisation, gouvernance
+- **Création de dashboards décisionnels** — à partir de vos fichiers Excel, ERP ou bases de données
+- **Conseil BI** — choix d'outils, architecture data, accompagnement des équipes métier
+- **Reporting automatisé** — Power BI Service, actualisation planifiée, partage sécurisé
+
+Vous avez un projet data ou souhaitez mettre en place un système de pilotage ?  
+**Contactez-moi :**
+
 - 📺 [YouTube @BoubacarDataAnalyst](https://www.youtube.com/@BoubacarDataAnalyst)
+- 💼 [LinkedIn](https://www.linkedin.com/in/boubacar-nikiema)
 - 💻 [GitHub @bouba02](https://github.com/bouba02)
 - 📧 nikiemaboubacar@gmail.com
 
 ---
 
-## ⭐ Si ce projet vous a aidé
-
-Laissez une ⭐ sur ce repository et abonnez-vous à la chaîne YouTube pour ne pas manquer les prochains modules !
-
----
-
-*Projet réalisé avec ❤️ pour la communauté data francophone d'Afrique*
+*Projet réalisé par **Boubacar Nikiema** — Data Analyst & Consultant BI | Ngroup Media & Digital*
