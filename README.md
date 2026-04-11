@@ -73,7 +73,6 @@ L'objectif : passer de fichiers Excel épars à **un outil de décision unique, 
 ├── Avis-Clients.csv               # Évaluations satisfaction client
 ├── Direction.png                  # Capture page principale
 ├── Alerte Stock.png              # Capture page gestion stock
-└── Script_VeloSahel_Final.html    # Script annoté du projet
 ```
 
 ---
