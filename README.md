@@ -33,7 +33,7 @@ L'objectif : passer de fichiers Excel épars à **un outil de décision unique, 
 ## 📊 Aperçu du Dashboard
 
 | Vue principale | Alertes Stock |
-|:-:|:-:|:-:|
+|:-:|:-:|
 | ![Direction](Direction.png) | ![Stock](Alerte%20Stock%24.png) |
 
 ---
