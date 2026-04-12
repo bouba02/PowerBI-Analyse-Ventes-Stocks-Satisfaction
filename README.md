@@ -79,7 +79,7 @@ L'objectif : passer de fichiers Excel épars à **un outil de décision unique, 
 
 ## 📏 Mesures DAX implémentées
 
-- **CA Total**, **CA MTD**, **CA YTD** — Chiffre d'affaires avec intelligence temporelle
+- **CA Total** — Chiffre d'affaires 
 - **Quantité vendue** — Volume global et par catégorie
 - **Note moyenne satisfaction** — Pondérée par volume de transactions
 - **Taux de rupture de stock** — % produits sous seuil d'alerte
