@@ -83,7 +83,6 @@ L'objectif : passer de fichiers Excel épars à **un outil de décision unique, 
 - **Quantité vendue** — Volume global et par catégorie
 - **Note moyenne satisfaction** — Pondérée par volume de transactions
 - **Taux de rupture de stock** — % produits sous seuil d'alerte
-- **Classement produits** — `RANKX` dynamique par CA et par marge
 - **Alertes conditionnelles** — Indicateurs visuels basés sur des seuils métier
 
 ---
