@@ -1,120 +1,153 @@
-# 📊 Power BI — Analyse Ventes, Stocks & Satisfaction Client
-### Distribution de vélos & accessoires | Afrique de l'Ouest
+# VéloSahel — Sales, Inventory & Customer Satisfaction Dashboard | Power BI
 
-[![Power BI](https://img.shields.io/badge/Power_BI-F2C811?style=for-the-badge&logo=powerbi&logoColor=black)](https://powerbi.microsoft.com)
-[![Excel](https://img.shields.io/badge/Excel-217346?style=for-the-badge&logo=microsoft-excel&logoColor=white)](https://www.microsoft.com/excel)
-[![DAX](https://img.shields.io/badge/DAX-0078D4?style=for-the-badge&logo=microsoft&logoColor=white)](https://dax.guide)
-[![Licence](https://img.shields.io/badge/Licence-MIT-green?style=for-the-badge)](LICENSE)
+> **Bicycle & accessories distribution · West Africa**  
+> 3 performance axes · Dynamic stock alerts · Star Schema · 54-min YouTube demo
 
-> Projet BI complet illustrant la mise en place d'un système de pilotage de la performance commerciale : de la collecte des données brutes jusqu'au dashboard décisionnel — en passant par le cadrage du projet, la modélisation, les KPIs et les alertes dynamiques.
+🇫🇷 [Version française disponible ici](README_FR.md)
 
 ---
 
-## 🎬 Démonstration complète
+## Business Problem
 
-[![Dashboard Power BI – Analyse Ventes Stocks Satisfaction](https://img.youtube.com/vi/VAYAVpYkcMg/maxresdefault.jpg)](https://youtu.be/VAYAVpYkcMg)
+A bicycle and accessories distributor operating across West Africa was managing
+its operations from scattered Excel files — no consolidated view on sales performance,
+critical stock levels, or customer satisfaction trends.
 
-▶️ **[Voir la démo complète (54 min)](https://youtu.be/VAYAVpYkcMg)**
+**3 unanswered questions for management:**
 
----
-
-## 🧩 Problématique métier
-
-Une entreprise de distribution de vélos et accessoires opérant en Afrique de l'Ouest souhaitait **centraliser le pilotage de son activité** autour de 3 axes :
-
-- **Ventes** — Quelle est la performance commerciale par produit, période et client ?
-- **Stocks** — Quels produits sont en rupture ou en sur-stock ?
-- **Satisfaction client** — Comment évolue la note moyenne et quels signaux faibles détecter ?
-
-L'objectif : passer de fichiers Excel épars à **un outil de décision unique, actualisable et lisible par le management**.
-
----
-
-## 📊 Aperçu du Dashboard
-
-| Vue principale | Alertes Stock |
-|:-:|:-:|
-| ![Direction](Direction.png) | ![Stock](Alerte%20Stock%24.png) |
-
----
-
-## ⚙️ Stack technique
-
-| Outil | Rôle |
+| Axis | Question |
 |---|---|
-| **Power BI Desktop** | Rapport, visualisations, navigation multi-pages |
-| **Power Query (M)** | Nettoyage, transformation, consolidation des sources |
-| **DAX** | Mesures calculées, KPIs, intelligence temporelle |
-| **Modélisation en étoile** | Optimisation des relations entre tables |
+| Sales | What is the performance by product, period, and client? |
+| Inventory | Which products are critically out of stock or overstocked? |
+| Satisfaction | How is the customer rating evolving and what early signals to detect? |
+
+**Mission:** Centralize operational management in a single tool — updatable,
+readable by management, with automated alerts on stock-outs.
 
 ---
 
-## 📐 Modèle de données
+## Dashboard — 2 Views
+
+| Management View | Stock Alerts |
+|:-:|:-:|
+| ![Direction](Direction.png) | ![Stock Alert](Alerte%20Stock%24.png) |
+
+**Management View:** Commercial performance by product category · Revenue trends ·
+Top products · Customer satisfaction evolution · Executive KPI summary
+
+**Stock Alerts View:** Products below critical threshold · Recommended reorder
+frequencies · Dynamic color-coded alerts by risk level
+
+---
+
+## Full Demo
+
+[![Watch on YouTube](https://img.youtube.com/vi/VAYAVpYkcMg/maxresdefault.jpg)](https://youtu.be/VAYAVpYkcMg)
+
+▶️ **[Full walkthrough — 54 minutes](https://youtu.be/VAYAVpYkcMg)**
+
+---
+
+## Data Model — Star Schema
 
 ```
-     [Inventaire]        [Avis-Clients]
-          │                    │
-          └────────────────────┘
-                    │
-              [Ventes]  ← Table de faits
-                    │
-              [Calendrier]  (table date DAX)
+[Inventory]     [Customer Reviews]
+      └──────────────┘
+              │
+          [Sales]          ← Fact table
+              │
+         [Calendar]        ← DAX date table
+```
+
+**3 consolidated sources:** `Ventes.csv` · `Inventaire.csv` · `Avis-Clients.csv`
+
+---
+
+## DAX Measures
+
+| Measure | Description |
+|---|---|
+| `Total_Revenue` | Global revenue and by product category |
+| `Units_Sold` | Volume — global, by product, by period |
+| `Avg_Satisfaction_Score` | Weighted by transaction volume |
+| `Stockout_Rate` | % products below defined alert threshold |
+| `Conditional_Alerts` | Visual indicators based on business thresholds |
+
+**Stock alert logic:**
+```dax
+Stock_Alert =
+VAR CurrentStock = [Current_Stock]
+VAR AlertThreshold = [Reorder_Point]
+RETURN
+SWITCH(TRUE(),
+    CurrentStock = 0,                  "Critical stockout",
+    CurrentStock <= AlertThreshold,    "Urgent reorder",
+    CurrentStock <= AlertThreshold*2,  "Monitor stock",
+    "Stock OK"
+)
 ```
 
 ---
 
-## 📁 Contenu du repository
+## Recommendations Delivered to Management
 
-```
-├── SahelVelo Dashboard.pbix       # Fichier Power BI complet
-├── SahelVelo Dashboard.pdf        # Export PDF du rapport
-├── Ventes.csv                     # Transactions commerciales
-├── Inventaire.csv                 # Catalogue produits & stocks
-├── Avis-Clients.csv               # Évaluations satisfaction client
-├── Direction.png                  # Capture page principale
-├── Alerte Stock.png              # Capture page gestion stock
-```
+- Critical stockout products identified with calculated reorder frequencies
+- Product categories ranked by revenue performance and trend (up / down / stable)
+- Customer satisfaction early warnings — categories below acceptable score threshold
+- Business rules fully documented for maintainable use by the internal team
 
 ---
 
-## 📏 Mesures DAX implémentées
+## Tech Stack
 
-- **CA Total** — Chiffre d'affaires 
-- **Quantité vendue** — Volume global et par catégorie
-- **Note moyenne satisfaction** — Pondérée par volume de transactions
-- **Taux de rupture de stock** — % produits sous seuil d'alerte
-- **Alertes conditionnelles** — Indicateurs visuels basés sur des seuils métier
+- **Power BI Desktop** — report, visualizations, multi-page navigation
+- **Power Query / M** — cleaning, transformation, consolidation of 3 CSV sources
+- **DAX** — calculated measures, KPIs, time intelligence
+- **Star Schema** — optimized relational modeling
 
 ---
 
-## 🚀 Utiliser ce projet
+## Quick Start
 
 ```bash
 git clone https://github.com/bouba02/PowerBI-Analyse-Ventes-Stocks-Satisfaction.git
 ```
 
-Ouvrir `SahelVelo Dashboard.pbix` avec Power BI Desktop.  
-Si les sources ne se chargent pas : `Accueil → Transformer les données → Paramètres de la source de données` → rediriger vers les CSV du dossier cloné.
+Open `SahelVelo Dashboard.pbix` in Power BI Desktop.  
+If sources don't load: `Home → Transform Data → Data Source Settings` → redirect to the CSV files in the cloned folder.
 
 ---
 
-## 🤝 Collaboration & Missions
+## Repository Structure
 
-Ce projet illustre mon approche sur des missions de type :
-
-- **Audit & structuration de données** — nettoyage, modélisation, gouvernance
-- **Création de dashboards décisionnels** — à partir de vos fichiers Excel, ERP ou bases de données
-- **Conseil BI** — choix d'outils, architecture data, accompagnement des équipes métier
-- **Reporting automatisé** — Power BI Service, actualisation planifiée, partage sécurisé
-
-Vous avez un projet data ou souhaitez mettre en place un système de pilotage ?  
-**Contactez-moi :**
-
-- 📺 [YouTube @BoubacarDataAnalyst](https://www.youtube.com/@BoubacarDataAnalyst)
-- 💼 [LinkedIn](https://www.linkedin.com/in/boubacar-nikiema)
-- 💻 [GitHub @bouba02](https://github.com/bouba02)
-- 📧 nikiemaboubacar@gmail.com
+```
+VeloSahel/
+├── README.md
+├── README_FR.md
+├── SahelVelo Dashboard.pbix
+├── SahelVelo Dashboard.pdf
+├── Ventes.csv
+├── Inventaire.csv
+├── Avis-Clients.csv
+├── Direction.png
+└── Alerte Stock.png
+```
 
 ---
 
-*Projet réalisé par **Boubacar Nikiema** — Data Analyst & Consultant BI | Ngroup Media & Digital*
+## Author
+
+**Boubacar Nikiema** — Data Analyst & BI Consultant
+
+Specialized in operational dashboards, Sales & Supply Chain analytics and performance
+management using Power BI, SQL, Python and Excel. Based in Morocco, working with
+clients across Africa and French-speaking Europe.
+
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-boubacar--nikiema-blue?logo=linkedin)](https://linkedin.com/in/boubacar-nikiema)
+[![YouTube](https://img.shields.io/badge/YouTube-BoubacarDataAnalyst-red?logo=youtube)](https://youtube.com/@BoubacarDataAnalyst)
+[![Email](https://img.shields.io/badge/Email-nikiemaboubacar%40gmail.com-gray?logo=gmail)](mailto:nikiemaboubacar@gmail.com)
+[![Portfolio](https://img.shields.io/badge/Portfolio-data.ngroupmediadigital.com-green)](https://data.ngroupmediadigital.com)
+
+---
+
+*Simulated data · Code: MIT License*
